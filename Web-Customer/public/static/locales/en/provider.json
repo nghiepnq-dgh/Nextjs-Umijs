@@ -1,0 +1,12 @@
+{
+  "menu_left_requestedCustomerList": "Requested Customer List",
+  "status_new": "New",
+  "status_onProcess": "On process",
+  "cancel": "Cancel",
+  "status_completed": "Completed",
+  "ask_before_delete": "Do you want to delete this solution?",
+  "deleteSolution": "Delete solution",
+  "lock_publish_desc": "This feature is temporarily locked because your account is in the process of verification",
+  "confirm-change-status": "Are you sure to update new status of this request?",
+  "packageManagement":"Package Management"
+ }

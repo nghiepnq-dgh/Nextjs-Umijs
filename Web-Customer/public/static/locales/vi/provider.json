@@ -1,0 +1,12 @@
+{
+  "menu_left_requestedCustomerList": "Danh Sách Khách Hàng Yêu Cầu",
+  "status_new": "Mới",
+  "status_onProcess": "Đang Tiến Hành",
+  "cancel": "Hủy bỏ",
+  "status_completed": "Hoàn Thành",
+  "ask_before_delete": "Bạn có muốn xóa giải pháp này không",
+  "deleteSolution": "Xóa giải pháp",
+  "lock_publish_desc": "Chức năng này tạm thời không khả dụng vì tài khoản của bạn đang trong quá trình kiểm duyệt",
+  "confirm-change-status": "Bạn có chắc chắn muốn cập nhật mới trạng thái của yêu cầu này?",
+  "packageManagement":"Quản lý gói"
+ }
