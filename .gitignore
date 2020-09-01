@@ -1,3 +1,5 @@
-/Web-Customer/node_modules
-/Web-Customer/.next
-/Portal-Customer/node_modules
+Web-Customer/node_modules
+Web-Customer/.next
+Portal-Customer/node_modules
+Web-Customer/public/admin/
+Portal-Customer/node_modules copy/

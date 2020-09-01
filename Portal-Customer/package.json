@@ -38,6 +38,7 @@
     "react": "^16.12.0",
     "react-custom-share": "^0.4.8",
     "react-dom": "^16.12.0",
+    "pm2": "^4.4.1",
     "react-helmet-async": "^1.0.6",
     "store": "^2.0.12",
     "umi": "^3.2.3",
