@@ -16,15 +16,14 @@ import { ENDPOINTS } from "./models";
 import { defaultRedirectAfterLogin } from "./handlers";
 import { getMyProfile } from "./../user/handlers";
 import Router from "next/router";
-import { setCookie } from "./../../functions/cookies";
 import { redirectTo } from "./../../functions/helpers";
 import * as ms from "ms";
 import { fetchAuthLoading } from "../../functions/effect";
 // import Cookies from 'js-cookie'
 import { toast } from "react-nextjs-toast";
+import { setCookie } from "../../common/utils/cookies";
 
 function* loginSaga({ payload }) {
-  console.log("DEBUG_CODE: function*loginSaga -> payload", payload);
   yield put(Loginingin(true));
   try {
     const response = yield fetchAuthLoading({
@@ -36,10 +35,8 @@ function* loginSaga({ payload }) {
         grantType: payload.grantType,
       },
     });
-    console.log("DEBUG_CODE: function*loginSaga -> response", response);
     if (response && response.success) {
       const { accessToken, expiresIn } = response.data;
-      console.log("DEBUG_CODE: function*loginSaga -> expires_in", accessToken);
       const currentTime = new Date();
       yield put(
         SetAccessToken({
@@ -107,6 +104,7 @@ function* loginError({ payload }) {
 function* logoutSaga({ payload }) {
   yield setCookie("accessToken", "");
   yield setCookie("userInfo", "");
+  yield setCookie("email", "");
   // enqueueNotiStack(NotifyType.Logout)
   if (!payload || payload.redirect === true) {
     redirectTo("/login");
@@ -114,7 +112,6 @@ function* logoutSaga({ payload }) {
 }
 
 function* watchLatestLogin() {
-  console.log("DEBUG_CODE: 111111111212*watchLatestLogin -> watchLatestLogin");
   yield takeLatest(Login.toString(), loginSaga);
 }
 

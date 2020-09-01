@@ -19,4 +19,6 @@ export const getStateFromStore = (key: string) => {
 export const resetDataWhenLogout = () => {
   store.set('accessToken', null);
   setCookie('ssoToken', '');
-}
+  setCookie('accessToken', '');
+  setCookie('email', '');
+};

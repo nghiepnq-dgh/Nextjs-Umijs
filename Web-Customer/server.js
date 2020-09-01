@@ -24,14 +24,14 @@ const handle = app.getRequestHandler();
   await nextI18next.initPromise;
   server.use(nextI18NextMiddleware(nextI18next));
 
-  server.get("*", (req, res) => {
-    const parsedUrl = parse(req.url, true);
-    return handle(req, res, parsedUrl);
-  });
-
   server.get("/dashboard", async (req, res) => {
     const file = await readFileAsync("public/admin/index.html");
     res.end(file);
+  });
+
+  server.get("*", (req, res) => {
+    const parsedUrl = parse(req.url, true);
+    return handle(req, res, parsedUrl);
   });
 
   server.listen(port, () => {

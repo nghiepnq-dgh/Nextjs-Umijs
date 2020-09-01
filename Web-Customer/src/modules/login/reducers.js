@@ -1,15 +1,15 @@
 import { handleActions } from "redux-actions";
 import * as actions from "./actions";
 import { MODULE_NAME } from "./models";
-import { setCookie } from "../../functions/cookies";
 import { omit } from "lodash";
+import { setCookie } from "../../common/utils/cookies";
 // import Cookies from 'js-cookie'
 
 const defaultState = {
   email: null,
   userInfo: null,
   accessToken: {
-    token: "",
+    token: null,
     expired: 0,
   },
   isLoggedIn: false,

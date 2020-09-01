@@ -52,10 +52,8 @@ const SignIn = (props) => {
   };
 
   const handleOnSubmit = (e) => {
-    console.log("DEBUG_CODE: handleOnSubmit -> e", e);
     e.preventDefault();
     props.dispatch(Login(account));
-    console.log("DEBUG_CODE: handleOnSubmit -> props", props);
     setWaitingLogin(true);
   };
 

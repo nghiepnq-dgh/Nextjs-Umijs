@@ -22,10 +22,11 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = props => {
-  const { className, submitting, form, dispatch, accessToken } = props;
+  const { className, submitting, form, dispatch } = props;
   const { formatMessage } = useIntl();
   const clsString = classNames(styles.submit);
   const [isLoginBySSO, setIsLoginBySSO] = useState(false);
+  const [tokenValid, setTokenValid] = useState();
   const handleFinish = (values: Store) => {
     dispatch({
       type: 'customer/login',
@@ -33,13 +34,17 @@ const Login: React.FC<LoginProps> = props => {
     });
   };
 
+
   useEffect(() => {
-    const ssoToken = getCookie('ssoToken');
-    if (ssoToken) {
+    const token = getCookie('accessToken');
+    const newToken = JSON.parse(token);
+    if (newToken['token']) {
       setIsLoginBySSO(true);
-      loginSSO(ssoToken);
+      loginSSO(newToken['token']);
+      setTokenValid(newToken['token']);
     }
   }, []);
+
 
   const loginSSO = (ssoToken: string) => {
     dispatch({
@@ -50,12 +55,12 @@ const Login: React.FC<LoginProps> = props => {
   };
 
   useEffect(() => {
-    if (accessToken) {
+    if (tokenValid) {
       history.push({
         pathname: '/invitation',
       });
     }
-  }, [accessToken]);
+  }, [tokenValid]);
 
   return (
     <div>
@@ -175,5 +180,5 @@ const Login: React.FC<LoginProps> = props => {
 
 export default connect(({ loading, customer }: ConnectState) => ({
   submitting: loading.effects['customer/login'],
-  accessToken: customer.accessToken,
+  // accessToken: customer.accessToken,
 }))(Login);

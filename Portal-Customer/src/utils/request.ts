@@ -4,7 +4,7 @@ import { history } from 'umi';
 import store from 'store';
 import { handleErrorUtil } from './function.utils';
 
-const _apiPrefix = process.env.API_URL || 'https://referralsvr.vndigitech.com';
+const _apiPrefix = process.env.API_URL || 'http://127.0.0.1:8000';
 
 interface FetchOptions extends RequestOptionsInit {
   url: string;
@@ -56,12 +56,12 @@ export const fetch = async ({
     {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json',
         ...headers,
       },
       ...options,
     },
-  )
+  );
   if (response && !response?.statusCode) {
     return { success: true, ...response };
   } else {
@@ -83,7 +83,6 @@ export const fetchAuth = async ({
   autoPrefix = true,
   ...options
 }: FetchOptions) => {
-  
   const accessToken = store.get('accessToken');
 
   if (!accessToken) {
@@ -92,17 +91,14 @@ export const fetchAuth = async ({
   }
 
   const _url = generateUrl(url, autoPrefix);
-  const response: FetchResponseType = await request(
-    _url,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        ...headers,
-      },
-      ...options,
+  const response: FetchResponseType = await request(_url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      ...headers,
     },
-  )
+    ...options,
+  });
 
   if (response && !response.statusCode) {
     return { success: true, ...response };

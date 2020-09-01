@@ -15,7 +15,8 @@ import Grow from "@material-ui/core/Grow";
 import Popper from "@material-ui/core/Popper";
 import storeAccessible from "../../functions/storeAccessible";
 import { Logout } from "../../modules/login/actions";
-
+import { redirectTo } from "./../../functions/helpers";
+import { getCookie } from "../../common/utils/cookies";
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
@@ -61,6 +62,7 @@ const MenuHeader = (props) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
+    redirectTo("/dashboard");
     setOpen(false);
   };
 
@@ -119,7 +121,7 @@ const MenuHeader = (props) => {
         </ul>
       </div>
       <div style={{ width: "35%", lineHeight: 3, textAlign: "center" }}>
-        {customer && customer.accessToken && customer.accessToken.token ? (
+        {getCookie("email") ? (
           <div className={classes.root}>
             <Paper className={classes.paper}>
               <MenuList>
@@ -135,7 +137,7 @@ const MenuHeader = (props) => {
                 aria-haspopup="true"
                 onClick={handleToggle}
               >
-                <AccountCircleIcon /> {customer.email}
+                <AccountCircleIcon /> {getCookie("email")}
               </Button>
               <Popper
                 open={open}

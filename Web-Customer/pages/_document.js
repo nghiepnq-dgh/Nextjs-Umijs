@@ -7,10 +7,8 @@ class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     let props = { ...initialProps };
-
     return props;
   }
-
   render() {
     return (
       <html>

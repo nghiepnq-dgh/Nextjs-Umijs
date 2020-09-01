@@ -1,14 +1,14 @@
-import { handleActions } from 'redux-actions'
-import * as actions from '../actions/common'
-import { setCookie } from './../../functions/cookies';
+import { handleActions } from "redux-actions";
+import * as actions from "../actions/common";
+import { setCookie } from "../utils/cookies";
 
 export const defaultState = {
-  language: 'vi',
+  language: "vi",
   timeout: 30000,
   setting: {},
   services: [],
-  notifications: []
-}
+  notifications: [],
+};
 
 const handlers = {
   [actions.clearAll]: () => ({ ...defaultState }),
@@ -17,11 +17,11 @@ const handlers = {
     services: action.payload,
   }),
   [actions.setLanguage]: (state, action) => {
-    setCookie('language', action.payload);
+    setCookie("language", action.payload);
     return {
       ...state,
       language: action.payload,
-    }
+    };
   },
   [actions.AddNotification]: (state, action) => {
     return {
@@ -33,10 +33,10 @@ const handlers = {
     return {
       ...state,
       notifications: state.notifications.filter(
-        notification => notification.key !== action.payload,
+        (notification) => notification.key !== action.payload
       ),
     };
-  }
-}
+  },
+};
 
-export default handleActions(handlers, defaultState)
+export default handleActions(handlers, defaultState);
