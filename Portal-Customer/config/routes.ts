@@ -1,11 +1,11 @@
 import { IRoute } from 'umi';
 
 export const routes: IRoute[] = [
-  {
-    path: '/dashboard',
-    component: '@/pages/customer/login',
-    wrappers: ['@/layouts/UserLayout'],
-  },
+  // {
+  //   path: '/dashboard',
+  //   component: '@/pages/customer/login',
+  //   wrappers: ['@/layouts/UserLayout'],
+  // },
   {
     path: '/login',
     component: '@/pages/customer/login',
