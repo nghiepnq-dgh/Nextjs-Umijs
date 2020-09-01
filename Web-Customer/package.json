@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "start:dev": "node server.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

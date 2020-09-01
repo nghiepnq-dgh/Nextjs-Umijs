@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const next = require("next");
 const { parse } = require("url");
-
 const nextI18NextMiddleware = require("next-i18next/middleware").default;
 var path = require("path");
 const fs = require("fs");
@@ -13,8 +12,10 @@ const port = parseInt(process.env.APP_PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const { promisify } = require("util");
+const readFileAsync = promisify(fs.readFile);
 const handle = app.getRequestHandler();
-const readFileAsync = pm2(fs.readFile)(async () => {
+
+(async () => {
   await app.prepare();
   const server = express();
 
