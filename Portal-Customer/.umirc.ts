@@ -1,12 +1,12 @@
 import { defineConfig } from 'umi';
 import { routes } from './config/routes';
 import defaultSettings from './config/defaultSetting';
-import CssUserLayout from './src/layouts/UserLayout.less'
+import CssUserLayout from './src/layouts/UserLayout.less';
 
 export default defineConfig({
   title: 'Portal | Customer',
-  outputPath:'../website/public/admin',
-  publicPath:'/admin/',
+  outputPath: '../Web-Customer/public/admin',
+  publicPath: '/admin/',
   hash: true,
   history: { type: 'hash' },
   locale: {
